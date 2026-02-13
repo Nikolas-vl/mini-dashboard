@@ -1,9 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class ApiService {
-  constructor(private http: HttpClient) { }
+  private readonly http = inject(HttpClient);
 
   get<T>(url: string) {
     return this.http.get<T>(url);
