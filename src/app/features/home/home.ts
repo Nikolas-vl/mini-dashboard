@@ -7,6 +7,7 @@ import { toObservable, takeUntilDestroyed } from '@angular/core/rxjs-interop';
   selector: 'app-home',
   standalone: true,
   template: `
+    <p class="text-2xl font-medium">RxJS </p>
     <h2>Timer</h2>
     <p>Seconds: {{ seconds() }}</p>
 
@@ -36,4 +37,5 @@ export class Home {
   start() { this.running.set(true); }
   stop() { this.running.set(false); }
   reset() { this.seconds.set(0); }
+
 }

@@ -9,5 +9,6 @@ export class ApiService {
 
   get<T>(url: string) {
     return this.http.get<T>(url);
+
   }
 }

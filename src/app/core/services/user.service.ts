@@ -13,5 +13,6 @@ export class UserService {
   readonly users = toSignal(
     this.api.get<User[]>('https://jsonplaceholder.typicode.com/users'),
     { initialValue: [] }
+
   );
 }

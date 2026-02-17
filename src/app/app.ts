@@ -24,5 +24,11 @@ export class App {
     users$.subscribe((users) => {
       console.log('users', users);
     })
+    const count = signal(5);
+    console.log(count);
+    console.log(count());
+    count.set(10)
+    console.log(count());
+
   }
 }
