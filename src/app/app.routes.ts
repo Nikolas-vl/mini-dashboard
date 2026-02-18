@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 import { Home } from './features/home/home';
-import { Users } from './features/users/users';
+import { Users } from './features/users/pages/users-list.ts/users';
 import { Login } from './features/auth/login/login';
-import { authGuard } from './core/guards/auth-guard';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
   { path: 'home', component: Home },
