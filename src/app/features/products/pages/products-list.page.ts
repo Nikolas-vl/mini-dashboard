@@ -21,12 +21,18 @@ import { ProductsFacade } from '../data-access/products.facade';
       @if (!facade.loading() && !facade.error()) {
         @if (facade.hasProducts()) {
           <div class="products-list">
-            @for (product of facade.products(); track product.id) {
+            @for (product of facade.filteredProducts(); track product.id) {
               <product-card [product]="product"></product-card>
             }
           </div>
         } @else {
-          <p>No products found.</p>
+          <p>
+            {{
+              facade.searchTerm()
+                ? 'No products match your search.'
+                : 'No products found.'
+            }}
+          </p>
         }
       }
     </section>

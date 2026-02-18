@@ -82,7 +82,5 @@ export class ProductDetailsPage implements OnInit {
     }
 
     this.facade.selectProduct(this.id);
-.store.selectProduct(this.id);
-.store.selectProduct(this.id);
   }
 }

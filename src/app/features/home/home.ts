@@ -37,5 +37,10 @@ export class Home {
   start() { this.running.set(true); }
   stop() { this.running.set(false); }
   reset() { this.seconds.set(0); }
-
 }
+// const user = signal<User | null>(null);
+// const settings = signal<Settings | null>(null);
+// const profile = computed(() => ({
+//   user: user(),
+//   settings: settings(),
+// }));

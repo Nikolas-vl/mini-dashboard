@@ -7,7 +7,7 @@ import {
 } from '../utils/products.mapper';
 import { Product, ProductApiModel, UpdateProductDto } from './products.models';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ProductsApi {
   private readonly http = inject(HttpClient);
   private readonly baseUrl = 'https://fakestoreapi.com/products';

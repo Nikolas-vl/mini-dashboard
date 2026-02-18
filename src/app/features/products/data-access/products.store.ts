@@ -9,15 +9,32 @@ export class ProductsStore {
 
   private readonly _products = signal<readonly Product[]>([]);
   private readonly _selectedProductId = signal<string | null>(null);
+  private readonly _searchTerm = signal('');
 
   private readonly _loading = signal(false);
   private readonly _saving = signal(false);
   private readonly _error = signal<string | null>(null);
 
   readonly products = this._products.asReadonly();
+  readonly searchTerm = this._searchTerm.asReadonly();
   readonly loading = this._loading.asReadonly();
   readonly saving = this._saving.asReadonly();
   readonly error = this._error.asReadonly();
+
+  readonly filteredProducts = computed(() => {
+    const term = this._searchTerm().trim().toLowerCase();
+    if (!term) {
+      return this._products();
+    }
+
+    return this._products().filter((product) => {
+      return (
+        product.name.toLowerCase().includes(term) ||
+        product.category.toLowerCase().includes(term) ||
+        product.description.toLowerCase().includes(term)
+      );
+    });
+  });
 
   readonly selectedProduct = computed(() => {
     const selectedId = this._selectedProductId();
@@ -92,6 +109,10 @@ export class ProductsStore {
     this._error.set(null);
   }
 
+  setSearchTerm(term: string): void {
+    this._searchTerm.set(term);
+  }
+
   private upsertProduct(product: Product): void {
     const exists = this._products().some((item) => item.id === product.id);
     if (exists) {
@@ -107,6 +128,7 @@ export class ProductsStore {
   reset(): void {
     this._products.set([]);
     this._selectedProductId.set(null);
+    this._searchTerm.set('');
     this._loading.set(false);
     this._saving.set(false);
     this._error.set(null);
