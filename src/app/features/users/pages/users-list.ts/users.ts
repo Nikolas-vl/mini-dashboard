@@ -28,4 +28,8 @@ export class Users {
   private readonly userService = inject(UserService);
 
   readonly users = this.userService.users;
+
+  constructor() {
+    this.userService.loadUsers();
+  }
 }

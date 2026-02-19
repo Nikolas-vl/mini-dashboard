@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting, HttpTestingController } from '@angular/common/http/testing';
-import { ApiService } from '../../core/services/api.service';
-import { UserService } from '../../core/services/user.service';
-import { User } from '../../core/models/user.model';
+import { ApiService } from '../../../../core/services/api.service';
+import { UserService } from '../../../../core/services/user.service';
+import { User } from '../../../../core/models/user.model';
 
 describe('UserService', () => {
   let service: UserService;
@@ -34,6 +34,7 @@ describe('UserService', () => {
     ];
 
     expect(service.users()).toEqual([]);
+    service.loadUsers();
 
     const req = httpMock.expectOne('https://jsonplaceholder.typicode.com/users');
     expect(req.request.method).toBe('GET');

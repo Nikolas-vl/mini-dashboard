@@ -1,0 +1,10 @@
+<ul>
+  @for (todo of todos(); track todo.id) {
+  <li>
+    <label>
+      <input type="checkbox" [checked]="todo.done" (change)="toggleTodo(todo.id)" />
+      <span [class.done]="todo.done">{{ todo.title }}</span>
+    </label>
+  </li>
+  }
+</ul>

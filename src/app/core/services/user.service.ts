@@ -10,9 +10,15 @@ import { User } from '../models/user.model';
 export class UserService {
   private readonly api = inject(ApiService);
 
-  readonly users = toSignal(
-    this.api.get<User[]>('https://jsonplaceholder.typicode.com/users'),
-    { initialValue: [] }
+  private readonly usersSignal = signal<User[]>([]);
 
-  );
+  readonly users = this.usersSignal.asReadonly();
+
+  loadUsers() {
+    this.api
+      .get<User[]>('https://jsonplaceholder.typicode.com/users')
+      .subscribe(users => {
+        this.usersSignal.set(users);
+      });
+  }
 }

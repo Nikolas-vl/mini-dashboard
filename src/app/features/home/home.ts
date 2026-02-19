@@ -2,19 +2,12 @@ import { Component, signal } from '@angular/core';
 import { interval, EMPTY } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { toObservable, takeUntilDestroyed } from '@angular/core/rxjs-interop';
-
+import { Todo } from '../todo/todo'
 @Component({
   selector: 'app-home',
   standalone: true,
-  template: `
-    <p class="text-2xl font-medium">RxJS </p>
-    <h2>Timer</h2>
-    <p>Seconds: {{ seconds() }}</p>
-
-    <button (click)="start()">Start</button>
-    <button (click)="stop()">Stop</button>
-    <button (click)="reset()">Reset</button>
-  `,
+  templateUrl: './home.html',
+  imports: [Todo],
 })
 export class Home {
   seconds = signal(0);
