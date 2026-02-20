@@ -1,9 +1,9 @@
-import { expect } from 'vitest';
+import { afterAll, beforeAll, expect } from 'vitest';
 
 beforeAll(() => {
-    // Global setup code can be added here
+  // Global setup code can be added here
 });
 
 afterAll(() => {
-    // Global teardown code can be added here
+  // Global teardown code can be added here
 });
